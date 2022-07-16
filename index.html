@@ -4,40 +4,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>No Fancy Caluclator</title>
+    <title>No Fancy Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/no-fancy-calculator-favicon-32x32.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <!-- <link rel="javascript" href="js/script.js"> -->
 </head>
 <body>
 <header>
     <h1>No Fancy Calculator</h1>
 </header> 
-    <div class="package-container">
+    <main class="main-container">
         <div class="intro-container">
-            <p id="Intro-text">Intro Text here Lorem ipsum ... </p>
+            <p id="intro">This is a super simple but no fancy calculator <br> Add
+            the numbers to be calculated into the two separate input boxes (one each!) <br> and
+            get the result by selecting the desired operator. <br>
+            Have fun! </p>
         </div>
-        <div class="calculator-container">
+        <div class="line-separator"></div>
+        <div class="input-container">
             <input id="number-input-1" type="number" placeholder="add a number">
             <input id="number-input-2" type="number" placeholder="add a number">
-            <button>Add them</button>
+        </div>
+        <div class="operator-container">
+            <button id="+">+</button>
+            <button id="-">-</button>
+            <button id="/">&#247</button>
+            <button id="*"> &#8727 </button>
+            <button id="%">%</button>
         </div>
         <div class="result-container">
             <span id="result-display">Result of calculation will be displayed header</span>
         </div>
-    </div>
+    </main>
 <script>
     const input1Element = document.getElementById('number-input-1');
     const input2Element = document.getElementById('number-input-2');
-    const buttonElement = document.querySelector('button');
+    const buttonPlusElement = document.getElementById('+')
+    const buttonMinusElement = document.getElementById('-')
+    const buttonDevideElement = document.getElementById('/')
+    const buttonMultiplyElement = document.getElementById('*')
+    const buttonModuloElement = document.getElementById('%')
     const spanElement = document.getElementById('result-display');
 
-    buttonElement.onclick = () => {
-        const input1 = parseInt(input1Element.value);
-        const input2 = parseInt(input2Element.value);
+    buttonPlusElement.onclick = () => {
+        spanElement.textContent = parseInt(input1Element.value) + parseInt(input2Element.value);
+        
+        input1Element.value = '';
+        input2Element.value = '';
+    }
 
-        console.log(typeof(input1))
-        console.log(typeof(input2))
+    buttonMinusElement.onclick = () => {
+        spanElement.textContent = parseInt(input1Element.value) - parseInt(input2Element.value);
+        
+        input1Element.value = '';
+        input2Element.value = '';
+    }
 
-        const result = input1 + input2;
-        spanElement.textContent = result;
+    buttonDevideElement.onclick = () => {
+        parseInt(input2Element.value) != 0 ? spanElement.textContent = parseInt(input1Element.value) / parseInt(input2Element.value) : spanElement.textContent = 'Can\'t devide by 0'
+        
+        input1Element.value = '';
+        input2Element.value = '';
+    }
+
+    buttonMultiplyElement.onclick = () => {
+        spanElement.textContent = parseInt(input1Element.value) * parseInt(input2Element.value);;
+        
+        input1Element.value = '';
+        input2Element.value = '';
+    }
+
+    buttonModuloElement.onclick = () => {
+        spanElement.textContent = parseInt(input1Element.value) % parseInt(input2Element.value);;
         
         input1Element.value = '';
         input2Element.value = '';
