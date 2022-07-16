@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Fancy Caluclator</title>
+</head>
+<body>
+<header>
+    <h1>No Fancy Caluclator</h1>
+</header> 
+    <div class="package-container">
+        <div class="intro-container">
+            <p id="Intro-text">Intro Text here Lorem ipsum ... </p>
+        </div>
+        <div class="calculator-container">
+            <input id="number-input-1" type="number" placeholder="number1">
+            <input id="number-input-2" type="number" placeholder="number2">
+            <button>Add</button>
+        </div>
+        <div class="result-container">
+            <span id="result-display">result given here</span>
+        </div>
+    </div>
+<script>
+    const input1Element = document.getElementById('number-input-1');
+    const input2Element = document.getElementById('number-input-2');
+    const buttonElement = document.querySelector('button');
+    const spanElement = document.getElementById('result-display');
+
+    buttonElement.onclick = () => {
+        const input1 = input1Element.value;
+        const input2 = input2Element.value;
+
+        console.log(typeof(input1))
+        console.log(typeof(input2))
+
+        const result = input1 + input2;
+        spanElement.textContent = result;
+        
+        input1Element.value = '';
+        input2Element.value = '';
+    }
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
