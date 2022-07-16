@@ -8,7 +8,7 @@
 </head>
 <body>
 <header>
-    <h1>No Fancy Caluclator</h1>
+    <h1>No Fancy Calculator</h1>
 </header> 
     <div class="package-container">
         <div class="intro-container">
@@ -17,7 +17,7 @@
         <div class="calculator-container">
             <input id="number-input-1" type="number" placeholder="number1">
             <input id="number-input-2" type="number" placeholder="number2">
-            <button>Add</button>
+            <button>Add them</button>
         </div>
         <div class="result-container">
             <span id="result-display">result given here</span>
@@ -30,8 +30,8 @@
     const spanElement = document.getElementById('result-display');
 
     buttonElement.onclick = () => {
-        const input1 = input1Element.value;
-        const input2 = input2Element.value;
+        const input1 = parseInt(input1Element.value);
+        const input2 = parseInt(input2Element.value);
 
         console.log(typeof(input1))
         console.log(typeof(input2))
@@ -42,11 +42,6 @@
         input1Element.value = '';
         input2Element.value = '';
     }
-
-
-
-
-
 
 </script>
 
