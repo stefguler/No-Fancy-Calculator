@@ -27,66 +27,67 @@
             Have fun! </p>
         </div>
         <div class="line-separator"></div>
-        <div class="input-container">
-            <input id="number-input-1" type="number" placeholder="add a number">
-            <input id="number-input-2" type="number" placeholder="add a number">
-        </div>
-        <div class="operator-container">
-            <button id="+">+</button>
-            <button id="-">-</button>
-            <button id="/">&#247</button>
-            <button id="*"> &#8727 </button>
-            <button id="%">%</button>
-        </div>
-        <div class="result-container">
-            <span id="result-display">Result of calculation will be displayed header</span>
+        <div class="calculator-container">
+            <div class="result-container">
+                <span id="result-display">Result</span>
+            </div>
+            <div class="input-container">
+                <input id="number-input-1" type="number" placeholder="add n°">
+                <input id="number-input-2" type="number" placeholder="add n°">
+            </div>
+            <div class="operator-container">
+                <div class="plusminus-container">
+                    <button class="operator" id="plus">+</button>
+                    <button class="operator" id="minus">-</button>
+                </div>
+                <div class="specialoperator-container">
+                    <button class="operator" id="multiplication"> &#8727 </button>
+                    <button class="operator" id="division">&#247</button>
+                    <button class="operator" id="modulo">%</button>
+                </div>
+            </div>
         </div>
     </main>
+    <footer>
+        <small>&copy by sDEV 2022 </small>
+    </footer>
 <script>
     const input1Element = document.getElementById('number-input-1');
     const input2Element = document.getElementById('number-input-2');
-    const buttonPlusElement = document.getElementById('+')
-    const buttonMinusElement = document.getElementById('-')
-    const buttonDevideElement = document.getElementById('/')
-    const buttonMultiplyElement = document.getElementById('*')
-    const buttonModuloElement = document.getElementById('%')
+    const buttonElements = document.querySelectorAll('.operator');
     const spanElement = document.getElementById('result-display');
 
-    buttonPlusElement.onclick = () => {
-        spanElement.textContent = parseInt(input1Element.value) + parseInt(input2Element.value);
-        
+    const onClick = (event) => {
+        switch (event.target.id) {
+            case 'plus': 
+                spanElement.textContent = parseInt(input1Element.value) + parseInt(input2Element.value);
+                console.log(event.target.id)
+                break;
+            case 'minus': 
+                spanElement.textContent = parseInt(input1Element.value) - parseInt(input2Element.value);
+                console.log(event.target.id)
+                break;
+            case 'division': 
+                parseInt(input2Element.value) != 0 ? spanElement.textContent = parseInt(input1Element.value) / parseInt(input2Element.value) : spanElement.textContent = 'Error: by 0 division'
+                console.log(event.target.id)
+                break;
+            case 'multiplication': 
+                spanElement.textContent = parseInt(input1Element.value) * parseInt(input2Element.value);
+                console.log(event.target.id) 
+                break;
+            case 'modulo': 
+                spanElement.textContent = parseInt(input1Element.value) % parseInt(input2Element.value);
+                console.log(event.target.id) 
+                break
+            default: spanElement.textContent = "Operator not valid";
+                break;
+        }
         input1Element.value = '';
         input2Element.value = '';
     }
-
-    buttonMinusElement.onclick = () => {
-        spanElement.textContent = parseInt(input1Element.value) - parseInt(input2Element.value);
-        
-        input1Element.value = '';
-        input2Element.value = '';
-    }
-
-    buttonDevideElement.onclick = () => {
-        parseInt(input2Element.value) != 0 ? spanElement.textContent = parseInt(input1Element.value) / parseInt(input2Element.value) : spanElement.textContent = 'Can\'t devide by 0'
-        
-        input1Element.value = '';
-        input2Element.value = '';
-    }
-
-    buttonMultiplyElement.onclick = () => {
-        spanElement.textContent = parseInt(input1Element.value) * parseInt(input2Element.value);;
-        
-        input1Element.value = '';
-        input2Element.value = '';
-    }
-
-    buttonModuloElement.onclick = () => {
-        spanElement.textContent = parseInt(input1Element.value) % parseInt(input2Element.value);;
-        
-        input1Element.value = '';
-        input2Element.value = '';
-    }
-
+    buttonElements.forEach(element => {
+        element.addEventListener('click', onClick);
+    });
 </script>
 
 </body>
